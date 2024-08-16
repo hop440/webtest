@@ -1,9 +1,30 @@
 <!DOCTYPE html>
 <html>
 <body>
-<p>Redirecting to Page</p>
+<p id="text">Redirecting to Page in 5</p>
 <script>
-setTimeout(location.replace("http://www.google.com/search?q=sexy+succubus&udm=2", 5000));
+let text = document.queryselecter("#text")
+let x = 5
+
+function redirect() {
+  location.replace("http://www.google.com/search?q=sexy+succubus&udm=2")
+}
+
+if (localStorage.getItem("wasHere") == "true") {
+  redirect()
+}
+
+localStorage.setItem("wasHere", "true")
+
+function count() {
+  x -= 1
+  text.innerHTML = "Redirecting to Page in " + x
+  if (x == -1) {
+    redirect()
+  }
+}
+
+setInterval(count(), 1000)
 </script>
 </body>
 </html>
